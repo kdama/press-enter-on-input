@@ -9,7 +9,7 @@
     <label for="password">Password:</label>
     <input type="password" id="passwordInput" name="password" />
   </div>
-  <div id="logger"></div>
+  <div id="logger"><pre>type, name, event.key, event.code</pre></div>
 
   <script>
     var textInput = document.getElementById("textInput");
@@ -19,7 +19,7 @@
     var log = function(type, name) {
       return function(value) {
         logger.innerHTML +=
-          "<pre>" + [type, name, value.key].join(", ") + "</pre>";
+          "<pre>" + [type, name, value.key, value.code].join(", ") + "</pre>";
       };
     };
 
