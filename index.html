@@ -9,7 +9,9 @@
     <label for="password">Password:</label>
     <input type="password" id="passwordInput" name="password" />
   </div>
-  <div id="logger"><pre>type, name, event.key, event.code</pre></div>
+  <div id="logger">
+    <pre>type, name, event.key, event.code event.keyCode, event.charCode</pre>
+  </div>
 
   <script>
     var textInput = document.getElementById("textInput");
@@ -19,7 +21,16 @@
     var log = function(type, name) {
       return function(value) {
         logger.innerHTML +=
-          "<pre>" + [type, name, value.key, value.code].join(", ") + "</pre>";
+          "<pre>" +
+          [
+            type,
+            name,
+            JSON.stringify(value.key),
+            JSON.stringify(value.code),
+            JSON.stringify(value.keyCode),
+            JSON.stringify(value.charCode)
+          ].join(", ") +
+          "</pre>";
       };
     };
 
