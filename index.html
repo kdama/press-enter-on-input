@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>press-enter-on-input</title>
+  <div>
+    <label for="text">Text:</label>
+    <input type="text" id="textInput" name="text" />
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="passwordInput" name="password" />
+  </div>
+  <div id="logger"></div>
+
+  <script>
+    var textInput = document.getElementById("textInput");
+    var passwordInput = document.getElementById("passwordInput");
+    var logger = document.getElementById("logger");
+
+    var log = function(type, name) {
+      return function(value) {
+        logger.innerHTML +=
+          "<pre>" + [type, name, value.key].join(", ") + "</pre>";
+      };
+    };
+
+    textInput.onkeydown = log("text", "onkeydown");
+    textInput.onkeypress = log("text", "onkeypress");
+    textInput.onkeyup = log("text", "onkeyup");
+
+    passwordInput.onkeydown = log("password", "onkeydown");
+    passwordInput.onkeypress = log("password", "onkeypress");
+    passwordInput.onkeyup = log("password", "onkeyup");
+  </script>
+</html>
