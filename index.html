@@ -9,6 +9,14 @@
     <label for="password">Password:</label>
     <input type="password" id="passwordInput" name="password" />
   </div>
+  <div>
+    <label for="textBlur">Text (blur):</label>
+    <input type="text" id="textBlurInput" name="textBlur" />
+  </div>
+  <div>
+    <label for="passwordBlur">Password (blur):</label>
+    <input type="password" id="passwordBlurInput" name="passwordBlur" />
+  </div>
   <div id="logger">
     <pre>type, name, event.key, event.code event.keyCode, event.charCode</pre>
   </div>
@@ -32,7 +40,7 @@
           ].join(", ") +
           "</pre>";
 
-        if (value.keyCode === 13) {
+        if (type.indexOf("Blur") !== -1 && value.keyCode === 13) {
           textInput.blur();
           passwordInput.blur();
         }
@@ -46,5 +54,13 @@
     passwordInput.onkeydown = log("password", "onkeydown");
     passwordInput.onkeypress = log("password", "onkeypress");
     passwordInput.onkeyup = log("password", "onkeyup");
+
+    textBlurInput.onkeydown = log("textBlur", "onkeydown");
+    textBlurInput.onkeypress = log("textBlur", "onkeypress");
+    textBlurInput.onkeyup = log("textBlur", "onkeyup");
+
+    passwordBlurInput.onkeydown = log("passwordBlur", "onkeydown");
+    passwordBlurInput.onkeypress = log("passwordBlur", "onkeypress");
+    passwordBlurInput.onkeyup = log("passwordBlur", "onkeyup");
   </script>
 </html>
